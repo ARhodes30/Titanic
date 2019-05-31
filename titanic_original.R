@@ -3,7 +3,7 @@ library(tidyr)
 library(readxl)
 library(stringr)
 
-titanic_original <- read.csv("~/R projects/Titanic/titanic3.csv")
+titanic_original <- read.csv("~/R projects/titanic3.csv")
 View(titanic_original)
 
 
@@ -27,10 +27,11 @@ summary(titanic_original$age)
 
 
 
-# find missing values in cabin,then place 0 for empty spaces or 1 if cabin column has value
+# find missing values in cabin,the  place 0 for empty spaces or 1 if cabin column has value
+#titanic_original$cabin[titanic_original$cabin == ""] <- "NA"
+
 titanic_original <- titanic_original %>%
   mutate(has_cabin_number = ifelse(cabin == "", 0, 1))
-
 
 
 #Fill these empty slots with a dummy value e.g. the string 'None' or 'NA'
@@ -40,8 +41,6 @@ titanic_original$boat[titanic_original$boat == ""] <- "NA"
 
 
 
-
-View(titanic_original)
   
 
 
